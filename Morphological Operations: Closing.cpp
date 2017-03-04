@@ -92,15 +92,14 @@ int main() {
                             "111"
                            };
     //printImage(image);
-    vector<string> dilatedImage = dilation(image,mask,{1,1});
-    //printImage(dilatedImage);
-    vector<string> erodedImage = erosion(dilatedImage,mask,{1,1});
+    vector<string> erodedImage = erosion(image,mask,{1,1});
     //printImage(erodedImage);
-
+    vector<string> dilatedImage = dilation(erodedImage,mask,{1,1});
+    //printImage(dilatedImage);
     int count_one = 0;
-    for(int i=0;i<erodedImage.size();i++)
-        for(int j=0;j<erodedImage[i].length();j++)
-            count_one+=(erodedImage[i][j]=='1');
+    for(int i=0;i<dilatedImage.size();i++)
+        for(int j=0;j<dilatedImage[i].length();j++)
+            count_one+=(dilatedImage[i][j]=='1');
     cout<<count_one<<endl;
     return 0;
 }
